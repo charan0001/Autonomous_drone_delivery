@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="box_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.2"/> <!-- Size of the box -->
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/> <!-- Color of the box -->
+      </material>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Position of the box -->
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.2"/> <!-- Size of the box -->
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Position of the box -->
+    </collision>
+  </link>
+</robot>
+

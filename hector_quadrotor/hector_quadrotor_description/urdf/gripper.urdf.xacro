@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="gripper_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/> <!-- Size of the gripper -->
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/> <!-- Color of the gripper -->
+      </material>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Position of the gripper -->
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/> <!-- Size of the gripper -->
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Position of the gripper -->
+    </collision>
+  </link>
+  
+  <joint name="gripper_joint" type="fixed">
+    <parent link="base_link"/> <!-- Attach gripper to drone base -->
+    <child link="gripper_link"/>
+    <origin xyz="0 0 -0.2" rpy="0 0 0"/> <!-- Position the gripper below the drone -->
+  </joint>
+</robot>
+
