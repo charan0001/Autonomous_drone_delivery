@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- Load custom city world -->
+  <node name="gazebo" pkg="gazebo_ros" type="gzserver" respawn="false" output="screen"
+        args="-s libgazebo_ros_api_plugin.so $(find hector_quadrotor_gazebo)/worlds/city.world">
+    <param name="paused" value="$(arg paused)"/>
+    <param name="use_sim_time" value="$(arg use_sim_time)"/>
+  </node>
+
+  <!-- GUI node (optional, only if gui is true) -->
+  <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen" if="$(arg gui)" />
+
+  <!-- Spawn quadrotor -->
+  <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+    <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+  </include>
+</launch>
+
